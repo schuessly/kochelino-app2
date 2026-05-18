@@ -1,13 +1,22 @@
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenAI } from '@google/genai'
 
 export function getGeminiModel(apiKey: string) {
-  const client = new GoogleGenerativeAI(apiKey)
-  return client.getGenerativeModel({
-    model: 'gemini-1.5-flash',
-    generationConfig: {
+  const ai = new GoogleGenAI({ apiKey })
+  return ai
+}
+
+export async function generateContent(apiKey: string, systemPrompt: string, userPrompt: string): Promise<string> {
+  const ai = new GoogleGenAI({ apiKey })
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.0-flash',
+    contents: [
+      { role: 'user', parts: [{ text: systemPrompt + '\n\n' + userPrompt }] }
+    ],
+    config: {
       responseMimeType: 'application/json',
       temperature: 0.8,
       maxOutputTokens: 4096,
     },
   })
+  return response.text ?? ''
 }

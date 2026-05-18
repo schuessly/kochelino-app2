@@ -40,9 +40,6 @@ export async function POST(req: NextRequest) {
     if (message.includes('API_KEY') || message.includes('not set') || message.includes('API key')) {
       return NextResponse.json({ error: 'API-Key ungültig. Bitte prüfe deinen Gemini Key.' }, { status: 401 })
     }
-    if (message.includes('quota') || message.includes('429')) {
-      return NextResponse.json({ error: 'API-Limit erreicht. Bitte warte kurz und versuche es erneut.' }, { status: 429 })
-    }
-    return NextResponse.json({ error: `Fehler: ${message.slice(0, 120)}` }, { status: 503 })
+    return NextResponse.json({ error: `Fehler: ${message.slice(0, 200)}` }, { status: 503 })
   }
 }

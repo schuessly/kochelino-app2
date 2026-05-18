@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 export function getGeminiModel(apiKey: string) {
   const client = new GoogleGenerativeAI(apiKey)
   return client.getGenerativeModel({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-1.5-flash',
     generationConfig: {
       responseMimeType: 'application/json',
       temperature: 0.8,

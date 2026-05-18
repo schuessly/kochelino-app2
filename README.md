@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍝 Kochelino
 
-## Getting Started
+> **Aus deiner Küche. Mit Liebe gekocht.**
 
-First, run the development server:
+Kochelino ist ein KI-gestützter Küchenhelfer: Gib ein, was du im Kühlschrank hast, und erhalte sofort personalisierte Rezeptvorschläge – inklusive Pro-Tipps, Vorratsverwaltung und digitalem Einkaufszettel.
+
+---
+
+## Features
+
+- **Rezeptgenerierung** – KI (Google Gemini) erstellt 4 individuelle Rezepte auf Basis deiner Zutaten
+- **Pro-Tipp** – Jedes Rezept enthält einen Chef-Tipp, wie es noch besser schmeckt
+- **Mein Vorrat** – Digitale Vorratskammer mit automatischer Mengenabziehung beim Kochen
+- **Lieblinge** – Rezepte als Favoriten speichern (LocalStorage)
+- **Einkaufszettel** – Fehlende Zutaten direkt auf den Zettel, druckbar
+- **Großer Modus** – Schriftgrößen-Toggle für bessere Lesbarkeit
+- **PWA-ready** – Funktioniert offline für Vorrat & Lieblinge
+
+---
+
+## Voraussetzungen
+
+- Node.js 20+ (empfohlen: via [nvm](https://github.com/nvm-sh/nvm))
+- Google Gemini API Key ([aistudio.google.com](https://aistudio.google.com))
+
+---
+
+## Setup
+
+### 1. Node.js installieren (falls noch nicht vorhanden)
+
+```bash
+# nvm installieren
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# Shell neu laden, dann Node.js installieren
+nvm install --lts
+nvm use --lts
+```
+
+### 2. Projekt einrichten
+
+```bash
+# In das Projektverzeichnis wechseln
+cd kochelino-app
+
+# Abhängigkeiten installieren
+npm install
+```
+
+### 3. API-Key konfigurieren
+
+```bash
+cp .env.example .env.local
+```
+
+Dann `.env.local` öffnen und deinen Gemini API Key eintragen:
+
+```
+GEMINI_API_KEY=dein_api_key_hier
+```
+
+Den Key bekommst du kostenlos unter [aistudio.google.com](https://aistudio.google.com) → „Get API Key".
+
+### 4. Entwicklungsserver starten
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Die App läuft dann unter [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment auf Vercel
 
-## Learn More
+```bash
+# Vercel CLI installieren
+npm install -g vercel
 
-To learn more about Next.js, take a look at the following resources:
+# Deployen
+vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Beim ersten Mal: GEMINI_API_KEY als Umgebungsvariable setzen
+vercel env add GEMINI_API_KEY
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Projektstruktur
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+kochelino-app/
+├── app/                    # Next.js App Router (Seiten + API)
+│   ├── onboarding/         # 3-Schritt-Eingabe-Wizard
+│   ├── rezepte/            # Rezeptliste + Detailansicht
+│   ├── vorrat/             # Vorratskammer
+│   ├── lieblinge/          # Gespeicherte Lieblingsrezepte
+│   ├── einkaufszettel/     # Digitaler Einkaufszettel
+│   └── api/rezepte/        # Gemini API Route
+├── components/             # React-Komponenten
+│   ├── layout/             # AppShell, TopBar, BottomNav
+│   ├── rezepte/            # RecipeCard, ProTipp, etc.
+│   ├── vorrat/             # Vorratsverwaltung
+│   └── shared/             # CookedButton, FavoriteButton
+├── stores/                 # Zustand State Management
+├── lib/                    # Gemini, pantryDeduction, Datenbank
+└── types/                  # TypeScript-Typen
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Technischer Stack
+
+| Bereich | Technologie |
+|---|---|
+| Framework | Next.js 16 (App Router, TypeScript) |
+| Styling | Tailwind CSS + shadcn/ui |
+| State | Zustand mit localStorage-Persistenz |
+| KI | Google Gemini API (`gemini-2.0-flash`) |
+| Deployment | Vercel |
+
+---
+
+## Neue Features (v2)
+
+### Mein Vorrat
+Die Vorratskammer zeigt alle gespeicherten Lebensmittel mit Mengenangaben. Nach dem Kochen eines Rezepts (Klick auf „Habe ich gekocht!") werden die verwendeten Zutaten automatisch abgezogen. Bei niedrigem Bestand erscheint eine Warnung.
+
+### Pro-Tipp
+Am Ende jedes Rezepts gibt Kochelino einen persönlichen Tipp, wie das Gericht noch besser schmecken könnte – auch wenn dafür eine zusätzliche Zutat eingekauft werden muss.

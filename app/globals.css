@@ -1,26 +1,98 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-nunito);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-nunito);
+
+  --color-forest: #1C4A2E;
+  --color-gold: #F2A20C;
+  --color-sage: #4A7C59;
+  --color-ivory: #F8F7F2;
+  --color-espresso: #1A1A1A;
+  --color-herb: #2D6A4F;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #F8F7F2;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #1C4A2E;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EDF4EF;
+  --secondary-foreground: #1C4A2E;
+  --muted: #E8EDE9;
+  --muted-foreground: #6B7870;
+  --accent: #F2A20C;
+  --accent-foreground: #1A1A1A;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #DDE8DC;
+  --input: #DDE8DC;
+  --ring: #1C4A2E;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  html {
+    @apply font-sans;
+  }
+  html.groesser {
+    font-size: 20px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .min-touch {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+@media print {
+  nav, header, .no-print, button:not(.print-show) {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
 }

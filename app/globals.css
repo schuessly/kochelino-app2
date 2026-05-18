@@ -63,6 +63,27 @@
   --radius: 0.75rem;
 }
 
+.dark {
+  --background: #0D1711;
+  --foreground: #F0EDE6;
+  --card: #142219;
+  --card-foreground: #F0EDE6;
+  --popover: #142219;
+  --popover-foreground: #F0EDE6;
+  --primary: #5DB879;
+  --primary-foreground: #0D1711;
+  --secondary: #1A2E20;
+  --secondary-foreground: #A8D5B5;
+  --muted: #1A2E20;
+  --muted-foreground: #7FA88A;
+  --accent: #F2A20C;
+  --accent-foreground: #0D1711;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #1E3328;
+  --input: #1A2E20;
+  --ring: #5DB879;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -71,6 +92,8 @@
     @apply bg-background text-foreground;
     font-size: 16px;
     line-height: 1.6;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
   }
   html {
     @apply font-sans;
@@ -84,6 +107,12 @@
   .min-touch {
     min-height: 48px;
     min-width: 48px;
+  }
+  .safe-area-pb {
+    padding-bottom: max(env(safe-area-inset-bottom), 8px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
   }
 }
 

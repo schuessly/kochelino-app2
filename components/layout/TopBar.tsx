@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useAppStore } from '@/stores/useAppStore'
 import { ApiKeyDialog } from './ApiKeyDialog'
 import { IconKey, IconFont } from '@/components/icons'
+import { ThemeToggle } from './ThemeToggle'
 
 function KochelinoLogo() {
   return (
@@ -33,33 +34,34 @@ export function TopBar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[#F8F7F2] border-b border-[#DDE8DC] no-print">
+      <header className="sticky top-0 z-40 bg-[#F8F7F2] dark:bg-[#0D1711] border-b border-[#DDE8DC] dark:border-[#1E3328] no-print">
         <div className="flex items-center justify-between max-w-2xl mx-auto px-4 h-14">
           <div className="flex items-center gap-2.5">
             <KochelinoLogo />
-            <span className="font-black text-[1.15rem] text-[#1C4A2E] tracking-tight leading-none">
+            <span className="font-black text-[1.15rem] text-[#1C4A2E] dark:text-[#5DB879] tracking-tight leading-none">
               Kochelino
             </span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setKeyDialogOpen(true)}
-              className="min-touch flex items-center justify-center w-10 h-10 rounded-xl border border-[#DDE8DC] hover:bg-[#EDF4EF] transition-colors"
+              className="min-touch flex items-center justify-center w-10 h-10 rounded-xl border border-[#DDE8DC] dark:border-[#1E3328] hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors"
               aria-label="API-Key eingeben"
               title={geminiApiKey ? 'API-Key gespeichert' : 'API-Key fehlt'}
             >
               <IconKey
-                className={`w-4.5 h-4.5 ${geminiApiKey ? 'text-[#1C4A2E]' : 'text-[#6B7870]'}`}
+                className={`w-4.5 h-4.5 ${geminiApiKey ? 'text-[#1C4A2E] dark:text-[#5DB879]' : 'text-[#6B7870]'}`}
               />
             </button>
             <button
               onClick={toggleGrosserModus}
-              className="min-touch flex items-center justify-center w-10 h-10 rounded-xl border border-[#DDE8DC] hover:bg-[#EDF4EF] transition-colors"
+              className="min-touch flex items-center justify-center w-10 h-10 rounded-xl border border-[#DDE8DC] dark:border-[#1E3328] hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors"
               aria-label={isGrosserModus ? 'Normaler Modus' : 'Großer Modus einschalten'}
               title={isGrosserModus ? 'Großer Modus: AN' : 'Großer Modus: AUS'}
             >
-              <IconFont className={`w-4.5 h-4.5 ${isGrosserModus ? 'text-[#1C4A2E]' : 'text-[#6B7870]'}`} />
+              <IconFont className={`w-4.5 h-4.5 ${isGrosserModus ? 'text-[#1C4A2E] dark:text-[#5DB879]' : 'text-[#6B7870]'}`} />
             </button>
+            <ThemeToggle />
           </div>
         </div>
       </header>

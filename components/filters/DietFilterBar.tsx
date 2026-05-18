@@ -24,8 +24,8 @@ export function DietFilterBar() {
             aria-pressed={isActive}
             className={`min-touch flex items-center gap-2 px-3 py-3 rounded-xl text-sm font-semibold transition-all border-2
               ${isActive
-                ? 'bg-[#D85A30] text-white border-[#D85A30]'
-                : 'bg-white text-[#4A1B0C] border-[#E8CEB0] hover:border-[#D85A30]'
+                ? 'bg-[#1C4A2E] text-white border-[#1C4A2E] dark:bg-[#2D6A4F] dark:border-[#2D6A4F]'
+                : 'bg-white dark:bg-[#142219] text-[#1A1A1A] dark:text-[#F0EDE6] border-[#DDE8DC] dark:border-[#1E3328] hover:border-[#1C4A2E] dark:hover:border-[#5DB879]'
               }`}
           >
             <span className="text-base">{DIET_FILTER_ICONS[filter]}</span>

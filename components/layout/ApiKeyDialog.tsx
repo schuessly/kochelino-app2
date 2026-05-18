@@ -44,25 +44,25 @@ export function ApiKeyDialog({ open, onClose }: { open: boolean; onClose: () => 
       aria-label="Gemini API-Key eingeben"
     >
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-2xl p-6 shadow-2xl space-y-5">
+      <div className="relative w-full sm:max-w-md bg-white dark:bg-[#142219] rounded-t-3xl sm:rounded-2xl p-6 shadow-2xl space-y-5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#EDF4EF] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-[#EDF4EF] dark:bg-[#1A2E20] flex items-center justify-center">
             <IconKey className="w-5 h-5 text-[#1C4A2E]" />
           </div>
           <div>
-            <h2 className="text-base font-black text-[#1A1A1A] leading-tight">Gemini API-Key</h2>
-            <p className="text-xs text-[#6B7870]">Einmal eingeben, dauerhaft gespeichert</p>
+            <h2 className="text-base font-black text-[#1A1A1A] dark:text-[#F0EDE6] leading-tight">Gemini API-Key</h2>
+            <p className="text-xs text-[#6B7870] dark:text-[#7FA88A]">Einmal eingeben, dauerhaft gespeichert</p>
           </div>
         </div>
 
-        <p className="text-sm text-[#6B7870] leading-relaxed">
+        <p className="text-sm text-[#6B7870] dark:text-[#7FA88A] leading-relaxed">
           Dein Key wird ausschließlich in diesem Browser gespeichert und niemals an Dritte weitergegeben.
           Kostenlos erhältlich unter{' '}
           <a
             href="https://aistudio.google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#1C4A2E] font-bold underline underline-offset-2"
+            className="text-[#1C4A2E] dark:text-[#5DB879] font-bold underline underline-offset-2"
           >
             aistudio.google.com
           </a>
@@ -77,7 +77,7 @@ export function ApiKeyDialog({ open, onClose }: { open: boolean; onClose: () => 
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="AIza..."
-            className="w-full min-h-[48px] px-4 py-3 rounded-xl border-2 border-[#DDE8DC] focus:border-[#1C4A2E] focus:outline-none font-mono text-sm bg-[#F8F7F2] transition-colors"
+            className="w-full min-h-[48px] px-4 py-3 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] focus:border-[#1C4A2E] dark:focus:border-[#5DB879] focus:outline-none font-mono text-sm bg-[#F8F7F2] dark:bg-[#1A2E20] dark:text-[#F0EDE6] transition-colors"
             aria-label="Gemini API-Key"
             autoComplete="off"
             spellCheck={false}
@@ -93,7 +93,7 @@ export function ApiKeyDialog({ open, onClose }: { open: boolean; onClose: () => 
         <div className="flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 min-h-[48px] rounded-xl border-2 border-[#DDE8DC] text-[#1A1A1A] font-bold hover:bg-[#EDF4EF] transition-colors text-sm"
+            className="flex-1 min-h-[48px] rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] text-[#1A1A1A] dark:text-[#F0EDE6] font-bold hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors text-sm"
           >
             Abbrechen
           </button>

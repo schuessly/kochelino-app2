@@ -27,7 +27,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   const gradient = CARD_GRADIENTS[hashCode(recipe.id) % CARD_GRADIENTS.length]
 
   return (
-    <article className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#DDE8DC] group">
+    <article className="bg-white dark:bg-[#142219] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#DDE8DC] dark:border-[#1E3328] group">
       <Link href={`/rezepte/${recipe.id}`} className="block">
         {/* Gradient header */}
         <div className={`bg-gradient-to-br ${gradient} px-5 pt-5 pb-12 relative overflow-hidden`}>
@@ -59,15 +59,15 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         </div>
 
         {/* Floating body card */}
-        <div className="-mt-6 mx-4 bg-white rounded-xl shadow-md border border-[#DDE8DC] px-4 py-3 mb-4 relative z-10">
-          <p className="text-[#6B7870] text-sm line-clamp-2 mb-3 leading-relaxed">{recipe.description}</p>
+        <div className="-mt-6 mx-4 bg-white dark:bg-[#142219] rounded-xl shadow-md border border-[#DDE8DC] dark:border-[#1E3328] px-4 py-3 mb-4 relative z-10">
+          <p className="text-[#6B7870] dark:text-[#7FA88A] text-sm line-clamp-2 mb-3 leading-relaxed">{recipe.description}</p>
           <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#6B7870]">
-              <IconClock className="w-3.5 h-3.5 text-[#1C4A2E]" />
+            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#6B7870] dark:text-[#7FA88A]">
+              <IconClock className="w-3.5 h-3.5 text-[#1C4A2E] dark:text-[#5DB879]" />
               {recipe.timeMinutes} Min.
             </span>
-            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#6B7870]">
-              <IconUsers className="w-3.5 h-3.5 text-[#1C4A2E]" />
+            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#6B7870] dark:text-[#7FA88A]">
+              <IconUsers className="w-3.5 h-3.5 text-[#1C4A2E] dark:text-[#5DB879]" />
               {recipe.servings} Personen
             </span>
             <DifficultyBadge difficulty={recipe.difficulty} />

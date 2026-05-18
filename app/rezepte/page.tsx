@@ -57,8 +57,8 @@ export default function RezeptePage() {
         <div className="w-16 h-16 mx-auto rounded-2xl bg-red-50 flex items-center justify-center">
           <IconUtensils className="w-8 h-8 text-red-400" />
         </div>
-        <p className="font-black text-[#1A1A1A] text-lg">Leider ist etwas schiefgelaufen.</p>
-        <p className="text-[#6B7870] text-sm max-w-xs mx-auto">{error}</p>
+        <p className="font-black text-[#1A1A1A] dark:text-[#F0EDE6] text-lg">Leider ist etwas schiefgelaufen.</p>
+        <p className="text-[#6B7870] dark:text-[#7FA88A] text-sm max-w-xs mx-auto">{error}</p>
         <button
           onClick={() => router.push('/onboarding')}
           className="min-touch px-6 py-3 rounded-xl bg-[#1C4A2E] text-white font-bold"
@@ -72,12 +72,12 @@ export default function RezeptePage() {
   if (recipes.length === 0) {
     return (
       <div className="text-center py-16 space-y-5">
-        <div className="w-20 h-20 mx-auto rounded-3xl bg-[#EDF4EF] flex items-center justify-center">
-          <IconUtensils className="w-10 h-10 text-[#1C4A2E]" />
+        <div className="w-20 h-20 mx-auto rounded-3xl bg-[#EDF4EF] dark:bg-[#1A2E20] flex items-center justify-center">
+          <IconUtensils className="w-10 h-10 text-[#1C4A2E] dark:text-[#5DB879]" />
         </div>
         <div className="space-y-2">
-          <p className="font-black text-[#1A1A1A] text-xl">Noch keine Rezepte</p>
-          <p className="text-[#6B7870] text-sm">Gib ein, was du hast, und lass dich überraschen.</p>
+          <p className="font-black text-[#1A1A1A] dark:text-[#F0EDE6] text-xl">Noch keine Rezepte</p>
+          <p className="text-[#6B7870] dark:text-[#7FA88A] text-sm">Gib ein, was du hast, und lass dich überraschen.</p>
         </div>
         <button
           onClick={() => router.push('/onboarding')}
@@ -93,9 +93,9 @@ export default function RezeptePage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between pt-1">
         <div>
-          <h1 className="text-xl font-black text-[#1A1A1A]">{recipes.length} Rezepte</h1>
+          <h1 className="text-xl font-black text-[#1A1A1A] dark:text-[#F0EDE6]">{recipes.length} Rezepte</h1>
           {selectedIngredients.length > 0 && (
-            <p className="text-xs text-[#6B7870] mt-0.5">
+            <p className="text-xs text-[#6B7870] dark:text-[#7FA88A] mt-0.5">
               {selectedIngredients.join(', ')}
             </p>
           )}
@@ -103,7 +103,7 @@ export default function RezeptePage() {
         <button
           onClick={reloadRecipes}
           disabled={isReloading}
-          className="flex items-center gap-1.5 text-sm font-bold text-[#1C4A2E] hover:text-[#2D6A4F] disabled:opacity-40 transition-colors"
+          className="flex items-center gap-1.5 text-sm font-bold text-[#1C4A2E] dark:text-[#5DB879] hover:text-[#2D6A4F] disabled:opacity-40 transition-colors"
           aria-label="Neue Rezepte generieren"
         >
           <IconRefresh className={`w-4 h-4 ${isReloading ? 'animate-spin' : ''}`} />
@@ -119,7 +119,7 @@ export default function RezeptePage() {
 
       <button
         onClick={() => router.push('/onboarding')}
-        className="w-full min-touch py-3 rounded-xl border-2 border-[#DDE8DC] text-[#1A1A1A] font-bold hover:bg-[#EDF4EF] transition-colors"
+        className="w-full min-touch py-3 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] text-[#1A1A1A] dark:text-[#F0EDE6] font-bold hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors"
       >
         Zutaten ändern
       </button>

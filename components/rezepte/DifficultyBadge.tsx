@@ -5,9 +5,9 @@ interface DifficultyBadgeProps {
 }
 
 const CONFIG = {
-  Einfach: { stars: 1, className: 'bg-[#EDF4EF] text-[#2D6A4F]' },
-  Mittel: { stars: 2, className: 'bg-[#FEF9EC] text-[#B07D0A]' },
-  Anspruchsvoll: { stars: 3, className: 'bg-red-50 text-red-700' },
+  Einfach: { stars: 1, className: 'bg-[#EDF4EF] dark:bg-[#1A2E20] text-[#2D6A4F] dark:text-[#5DB879]' },
+  Mittel: { stars: 2, className: 'bg-[#FEF9EC] dark:bg-[#2A1F00]/40 text-[#B07D0A] dark:text-[#F2A20C]' },
+  Anspruchsvoll: { stars: 3, className: 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-400' },
 }
 
 export function DifficultyBadge({ difficulty }: DifficultyBadgeProps) {

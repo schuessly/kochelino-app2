@@ -75,9 +75,9 @@ export default function VorratPage() {
     <div className="space-y-4 pb-6">
       <div className="flex items-center justify-between pt-1">
         <div>
-          <h1 className="text-xl font-black text-[#1A1A1A]">Mein Vorrat</h1>
+          <h1 className="text-xl font-black text-[#1A1A1A] dark:text-[#F0EDE6]">Mein Vorrat</h1>
         </div>
-        <span className="text-xs font-bold text-[#6B7870] bg-[#EDF4EF] px-2.5 py-1 rounded-full">
+        <span className="text-xs font-bold text-[#6B7870] dark:text-[#7FA88A] bg-[#EDF4EF] dark:bg-[#1A2E20] px-2.5 py-1 rounded-full">
           {vorratItems.length} Artikel
         </span>
       </div>
@@ -85,24 +85,24 @@ export default function VorratPage() {
       {lowStock.length > 0 && (
         <div
           role="alert"
-          className="bg-[#FEF9EC] border border-[#F2A20C]/40 rounded-xl p-3.5 flex items-start gap-3"
+          className="bg-[#FEF9EC] dark:bg-[#2A1F00]/40 border border-[#F2A20C]/40 rounded-xl p-3.5 flex items-start gap-3"
         >
-          <IconWarning className="w-4.5 h-4.5 text-[#B07D0A] flex-shrink-0 mt-0.5" />
+          <IconWarning className="w-4.5 h-4.5 text-[#B07D0A] dark:text-[#F2A20C] flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-bold text-[#B07D0A] text-sm">Wird bald leer:</p>
-            <p className="text-sm text-[#6B7870]">{lowStock.map((i) => i.name).join(', ')}</p>
+            <p className="font-bold text-[#B07D0A] dark:text-[#F2A20C] text-sm">Wird bald leer:</p>
+            <p className="text-sm text-[#6B7870] dark:text-[#7FA88A]">{lowStock.map((i) => i.name).join(', ')}</p>
           </div>
         </div>
       )}
 
       {vorratItems.length === 0 ? (
         <div className="text-center py-16 space-y-4">
-          <div className="w-20 h-20 mx-auto rounded-3xl bg-[#EDF4EF] flex items-center justify-center">
-            <IconPantry className="w-10 h-10 text-[#1C4A2E]" />
+          <div className="w-20 h-20 mx-auto rounded-3xl bg-[#EDF4EF] dark:bg-[#1A2E20] flex items-center justify-center">
+            <IconPantry className="w-10 h-10 text-[#1C4A2E] dark:text-[#5DB879]" />
           </div>
           <div className="space-y-2">
-            <p className="font-black text-[#1A1A1A]">Dein Vorrat ist leer</p>
-            <p className="text-[#6B7870] text-sm max-w-xs mx-auto">
+            <p className="font-black text-[#1A1A1A] dark:text-[#F0EDE6]">Dein Vorrat ist leer</p>
+            <p className="text-[#6B7870] dark:text-[#7FA88A] text-sm max-w-xs mx-auto">
               Füge deine Vorräte hinzu, dann passt Kochelino die Rezepte an.
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function VorratPage() {
         <div className="space-y-5">
           {ALL_CATEGORIES.filter((cat) => grouped[cat].length > 0).map((cat) => (
             <section key={cat}>
-              <h2 className="text-[10px] font-black text-[#6B7870] flex items-center gap-1.5 mb-2.5 uppercase tracking-widest">
+              <h2 className="text-[10px] font-black text-[#6B7870] dark:text-[#7FA88A] flex items-center gap-1.5 mb-2.5 uppercase tracking-widest">
                 <span className="text-base">{CATEGORY_ICONS[cat]}</span> {cat}
               </h2>
               <ul className="space-y-2">
@@ -121,15 +121,15 @@ export default function VorratPage() {
                   return (
                     <li
                       key={item.id}
-                      className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-[#DDE8DC] shadow-sm"
+                      className="flex items-center gap-3 bg-white dark:bg-[#142219] rounded-xl px-4 py-3 border border-[#DDE8DC] dark:border-[#1E3328] shadow-sm"
                     >
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-[#1A1A1A] text-sm truncate">{item.name}</p>
+                        <p className="font-semibold text-[#1A1A1A] dark:text-[#F0EDE6] text-sm truncate">{item.name}</p>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <button
                           onClick={() => updateVorratItem(item.id, { quantity: Math.max(0, item.quantity - 1) })}
-                          className="w-8 h-8 rounded-lg bg-[#EDF4EF] text-[#1C4A2E] flex items-center justify-center hover:bg-[#DDE8DC] transition-colors"
+                          className="w-8 h-8 rounded-lg bg-[#EDF4EF] dark:bg-[#1A2E20] text-[#1C4A2E] dark:text-[#5DB879] flex items-center justify-center hover:bg-[#DDE8DC] dark:hover:bg-[#1E3328] transition-colors"
                           aria-label={`Menge von ${item.name} verringern`}
                         >
                           <IconMinus className="w-3.5 h-3.5" />
@@ -170,8 +170,8 @@ export default function VorratPage() {
 
       {/* Add Form */}
       {showAdd && (
-        <div className="bg-white rounded-2xl p-5 border border-[#DDE8DC] shadow-lg space-y-3">
-          <h3 className="font-black text-[#1A1A1A]">Artikel hinzufügen</h3>
+        <div className="bg-white dark:bg-[#142219] rounded-2xl p-5 border border-[#DDE8DC] dark:border-[#1E3328] shadow-lg space-y-3">
+          <h3 className="font-black text-[#1A1A1A] dark:text-[#F0EDE6]">Artikel hinzufügen</h3>
 
           <div className="relative">
             <input
@@ -179,16 +179,16 @@ export default function VorratPage() {
               value={nameQuery}
               onChange={(e) => { setNameQuery(e.target.value); setNewName(e.target.value) }}
               placeholder="Name (z.B. Tomaten)"
-              className="w-full min-h-[48px] px-4 py-2 rounded-xl border-2 border-[#DDE8DC] focus:border-[#1C4A2E] focus:outline-none text-sm bg-[#F8F7F2] transition-colors"
+              className="w-full min-h-[48px] px-4 py-2 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] focus:border-[#1C4A2E] dark:focus:border-[#5DB879] focus:outline-none text-sm bg-[#F8F7F2] dark:bg-[#1A2E20] dark:text-[#F0EDE6] transition-colors"
               aria-label="Artikelname"
             />
             {nameSuggestions().length > 0 && (
-              <ul className="absolute z-10 top-full left-0 right-0 bg-white border border-[#DDE8DC] rounded-xl mt-1 shadow-xl overflow-hidden">
+              <ul className="absolute z-10 top-full left-0 right-0 bg-white dark:bg-[#142219] border border-[#DDE8DC] dark:border-[#1E3328] rounded-xl mt-1 shadow-xl overflow-hidden">
                 {nameSuggestions().map((s) => (
                   <li
                     key={s.name}
                     onClick={() => selectName(s.name)}
-                    className="px-4 py-2.5 cursor-pointer hover:bg-[#EDF4EF] text-sm font-semibold flex items-center gap-2 transition-colors"
+                    className="px-4 py-2.5 cursor-pointer hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] text-sm font-semibold dark:text-[#F0EDE6] flex items-center gap-2 transition-colors"
                   >
                     <span>{s.icon}</span> {s.name}
                   </li>
@@ -210,7 +210,7 @@ export default function VorratPage() {
             <select
               value={newUnit}
               onChange={(e) => setNewUnit(e.target.value as Unit)}
-              className="min-h-[48px] px-3 py-2 rounded-xl border-2 border-[#DDE8DC] focus:border-[#1C4A2E] focus:outline-none text-sm bg-white transition-colors"
+              className="min-h-[48px] px-3 py-2 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] focus:border-[#1C4A2E] dark:focus:border-[#5DB879] focus:outline-none text-sm bg-white dark:bg-[#1A2E20] dark:text-[#F0EDE6] transition-colors"
               aria-label="Einheit"
             >
               {UNITS.map((u) => <option key={u} value={u}>{u}</option>)}
@@ -220,7 +220,7 @@ export default function VorratPage() {
           <select
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value as Category)}
-            className="w-full min-h-[48px] px-4 py-2 rounded-xl border-2 border-[#DDE8DC] focus:border-[#1C4A2E] focus:outline-none text-sm bg-white transition-colors"
+            className="w-full min-h-[48px] px-4 py-2 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] focus:border-[#1C4A2E] dark:focus:border-[#5DB879] focus:outline-none text-sm bg-white dark:bg-[#1A2E20] dark:text-[#F0EDE6] transition-colors"
             aria-label="Kategorie"
           >
             {ALL_CATEGORIES.map((c) => <option key={c} value={c}>{CATEGORY_ICONS[c]} {c}</option>)}
@@ -239,7 +239,7 @@ export default function VorratPage() {
           <div className="flex gap-2">
             <button
               onClick={() => setShowAdd(false)}
-              className="flex-1 min-touch py-2.5 rounded-xl border-2 border-[#DDE8DC] text-[#1A1A1A] font-bold text-sm hover:bg-[#EDF4EF] transition-colors"
+              className="flex-1 min-touch py-2.5 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] text-[#1A1A1A] dark:text-[#F0EDE6] font-bold text-sm hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors"
             >
               Abbrechen
             </button>

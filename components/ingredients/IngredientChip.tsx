@@ -7,7 +7,7 @@ interface IngredientChipProps {
 
 export function IngredientChip({ name, onRemove }: IngredientChipProps) {
   return (
-    <li className="flex items-center gap-1 bg-[#D85A30] text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+    <li className="flex items-center gap-1 bg-[#1C4A2E] dark:bg-[#2D6A4F] text-white text-sm font-semibold px-3 py-1.5 rounded-full">
       <span>{name}</span>
       <button
         onClick={() => onRemove(name)}

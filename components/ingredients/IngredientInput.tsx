@@ -65,7 +65,7 @@ export function IngredientInput() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="z.B. Tomaten, Nudeln, Käse …"
-          className="w-full min-h-[52px] px-4 py-3 rounded-xl border-2 border-[#E8CEB0] bg-white text-[#4A1B0C] placeholder-[#5F5E5A] focus:outline-none focus:border-[#D85A30] text-base"
+          className="w-full min-h-[52px] px-4 py-3 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] bg-white dark:bg-[#1A2E20] text-[#1A1A1A] dark:text-[#F0EDE6] placeholder-[#6B7870] dark:placeholder-[#7FA88A] focus:outline-none focus:border-[#1C4A2E] dark:focus:border-[#5DB879] text-base"
           aria-label="Zutat eingeben"
           aria-autocomplete="list"
           aria-controls="ingredient-suggestions"
@@ -77,7 +77,7 @@ export function IngredientInput() {
             id="ingredient-suggestions"
             ref={listRef}
             role="listbox"
-            className="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-[#E8CEB0] rounded-xl shadow-lg overflow-hidden"
+            className="absolute top-full left-0 right-0 z-50 mt-1 bg-white dark:bg-[#142219] border border-[#DDE8DC] dark:border-[#1E3328] rounded-xl shadow-lg overflow-hidden"
           >
             {suggestions.map((s, i) => (
               <li
@@ -86,12 +86,12 @@ export function IngredientInput() {
                 aria-selected={i === activeIndex}
                 onClick={() => selectIngredient(s.name)}
                 className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors
-                  ${i === activeIndex ? 'bg-[#FAEEDA]' : 'hover:bg-[#FFF8F0]'}`}
+                  ${i === activeIndex ? 'bg-[#EDF4EF] dark:bg-[#1A2E20]' : 'hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20]'}`}
               >
                 <span className="text-xl">{s.icon}</span>
                 <div>
-                  <div className="font-semibold text-[#4A1B0C] text-sm">{s.name}</div>
-                  <div className="text-xs text-[#5F5E5A]">{s.category}</div>
+                  <div className="font-semibold text-[#1A1A1A] dark:text-[#F0EDE6] text-sm">{s.name}</div>
+                  <div className="text-xs text-[#6B7870] dark:text-[#7FA88A]">{s.category}</div>
                 </div>
               </li>
             ))}
@@ -109,7 +109,7 @@ export function IngredientInput() {
 
       {quickItems.length > 0 && (
         <div>
-          <p className="text-xs font-semibold text-[#5F5E5A] mb-2">Schnellauswahl:</p>
+          <p className="text-xs font-semibold text-[#6B7870] dark:text-[#7FA88A] mb-2">Schnellauswahl:</p>
           <div className="flex flex-wrap gap-2">
             {quickItems.slice(0, 6).map((name) => {
               const entry = INGREDIENTS_DB.find((i) => i.name === name)
@@ -117,7 +117,7 @@ export function IngredientInput() {
                 <button
                   key={name}
                   onClick={() => selectIngredient(name)}
-                  className="flex items-center gap-1 px-3 py-1.5 bg-[#F0E0C8] text-[#4A1B0C] text-sm font-semibold rounded-full hover:bg-[#E8CEB0] transition-colors"
+                  className="flex items-center gap-1 px-3 py-1.5 bg-[#EDF4EF] dark:bg-[#1A2E20] text-[#1C4A2E] dark:text-[#5DB879] text-sm font-semibold rounded-full hover:bg-[#DDE8DC] dark:hover:bg-[#1E3328] transition-colors"
                 >
                   {entry?.icon} {name}
                 </button>

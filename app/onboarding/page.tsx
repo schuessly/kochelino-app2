@@ -70,7 +70,7 @@ export default function OnboardingPage() {
           <div
             key={i}
             className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-              i < step ? 'bg-[#1C4A2E]' : i === step ? 'bg-[#F2A20C]' : 'bg-[#DDE8DC]'
+              i < step ? 'bg-[#1C4A2E]' : i === step ? 'bg-[#F2A20C]' : 'bg-[#DDE8DC] dark:bg-[#1E3328]'
             }`}
           />
         ))}
@@ -78,24 +78,24 @@ export default function OnboardingPage() {
 
       {/* Step Header */}
       <div className="text-center space-y-3">
-        <div className="w-14 h-14 mx-auto rounded-2xl bg-[#EDF4EF] flex items-center justify-center">
-          <CurrentIcon className="w-7 h-7 text-[#1C4A2E]" />
+        <div className="w-14 h-14 mx-auto rounded-2xl bg-[#EDF4EF] dark:bg-[#1A2E20] flex items-center justify-center">
+          <CurrentIcon className="w-7 h-7 text-[#1C4A2E] dark:text-[#5DB879]" />
         </div>
         <div>
-          <p className="text-xs font-black text-[#6B7870] uppercase tracking-widest mb-1">
+          <p className="text-xs font-black text-[#6B7870] dark:text-[#7FA88A] uppercase tracking-widest mb-1">
             Schritt {step + 1} von {STEPS.length}
           </p>
-          <h1 className="text-2xl font-black text-[#1A1A1A] leading-tight">{STEPS[step].title}</h1>
-          <p className="text-[#6B7870] text-sm mt-1">{STEPS[step].subtitle}</p>
+          <h1 className="text-2xl font-black text-[#1A1A1A] dark:text-[#F0EDE6] leading-tight">{STEPS[step].title}</h1>
+          <p className="text-[#6B7870] dark:text-[#7FA88A] text-sm mt-1">{STEPS[step].subtitle}</p>
         </div>
       </div>
 
       {/* Step Content */}
-      <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#DDE8DC]">
+      <div className="bg-white dark:bg-[#142219] rounded-2xl p-5 shadow-sm border border-[#DDE8DC] dark:border-[#1E3328]">
         {step === 0 && <IngredientInput />}
         {step === 1 && (
           <div className="space-y-2">
-            <p className="text-sm font-black text-[#1A1A1A] mb-4">Anzahl Personen</p>
+            <p className="text-sm font-black text-[#1A1A1A] dark:text-[#F0EDE6] mb-4">Anzahl Personen</p>
             <PortionSlider />
           </div>
         )}
@@ -107,7 +107,7 @@ export default function OnboardingPage() {
         {step > 0 && (
           <button
             onClick={() => setStep(step - 1)}
-            className="flex-1 min-touch py-3 rounded-xl border-2 border-[#DDE8DC] text-[#1A1A1A] font-bold text-base hover:bg-[#EDF4EF] transition-colors"
+            className="flex-1 min-touch py-3 rounded-xl border-2 border-[#DDE8DC] dark:border-[#1E3328] text-[#1A1A1A] dark:text-[#F0EDE6] font-bold text-base hover:bg-[#EDF4EF] dark:hover:bg-[#1A2E20] transition-colors"
           >
             Zurück
           </button>
@@ -132,7 +132,7 @@ export default function OnboardingPage() {
       </div>
 
       {step === 0 && selectedIngredients.length === 0 && (
-        <p className="text-center text-xs text-[#6B7870]">
+        <p className="text-center text-xs text-[#6B7870] dark:text-[#7FA88A]">
           Gib mindestens eine Zutat ein, um fortzufahren.
         </p>
       )}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Nunito } from 'next/font/google'
 import './globals.css'
 import { AppShell } from '@/components/layout/AppShell'
+import { ThemeProvider } from 'next-themes'
 
 const nunito = Nunito({
   variable: '--font-nunito',
@@ -25,8 +26,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${nunito.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-[#F8F7F2]">
-        <AppShell>{children}</AppShell>
+      <body className="min-h-full flex flex-col bg-background transition-colors duration-200">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AppShell>{children}</AppShell>
+        </ThemeProvider>
       </body>
     </html>
   )

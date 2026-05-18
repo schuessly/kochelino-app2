@@ -22,7 +22,7 @@ export function BottomNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#DDE8DC] safe-area-pb"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-[#142219] border-t border-[#DDE8DC] dark:border-[#1E3328] safe-area-pb"
       role="navigation"
       aria-label="Hauptnavigation"
     >
@@ -41,7 +41,7 @@ export function BottomNav() {
               <Link
                 href={item.href}
                 className={`flex flex-col items-center justify-center gap-1 min-h-[56px] w-full relative transition-colors ${
-                  isActive ? 'text-[#1C4A2E]' : 'text-[#6B7870]'
+                  isActive ? 'text-[#1C4A2E] dark:text-[#5DB879]' : 'text-[#6B7870] dark:text-[#7FA88A]'
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
@@ -55,13 +55,13 @@ export function BottomNav() {
                 </span>
                 <span
                   className={`text-[10px] font-bold tracking-wide ${
-                    isActive ? 'text-[#1C4A2E]' : 'text-[#6B7870]'
+                    isActive ? 'text-[#1C4A2E] dark:text-[#5DB879]' : 'text-[#6B7870] dark:text-[#7FA88A]'
                   }`}
                 >
                   {item.label}
                 </span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-[#1C4A2E]" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-[#1C4A2E] dark:bg-[#5DB879]" />
                 )}
               </Link>
             </li>

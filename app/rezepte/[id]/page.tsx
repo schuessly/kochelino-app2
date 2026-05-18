@@ -51,7 +51,7 @@ export default function RecipeDetailPage({ params }: PageProps) {
     <article className="space-y-4 pb-8">
       <button
         onClick={() => router.back()}
-        className="flex items-center gap-1.5 text-[#1C4A2E] font-bold text-sm mt-1"
+        className="flex items-center gap-1.5 text-[#1C4A2E] dark:text-[#5DB879] font-bold text-sm mt-1"
       >
         <IconArrowLeft className="w-4 h-4" /> Zurück
       </button>
@@ -86,13 +86,13 @@ export default function RecipeDetailPage({ params }: PageProps) {
       </div>
 
       {/* Ingredients */}
-      <section className="bg-white rounded-2xl p-5 border border-[#DDE8DC]">
+      <section className="bg-white dark:bg-[#142219] rounded-2xl p-5 border border-[#DDE8DC] dark:border-[#1E3328]">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-black text-[#1A1A1A]">Zutaten</h2>
+          <h2 className="font-black text-[#1A1A1A] dark:text-[#F0EDE6]">Zutaten</h2>
           {missingCount > 0 && (
             <button
               onClick={addMissingToShopping}
-              className="flex items-center gap-1.5 text-xs font-bold text-[#1C4A2E] bg-[#EDF4EF] px-3 py-1.5 rounded-full hover:bg-[#DDE8DC] transition-colors"
+              className="flex items-center gap-1.5 text-xs font-bold text-[#1C4A2E] dark:text-[#5DB879] bg-[#EDF4EF] dark:bg-[#1A2E20] px-3 py-1.5 rounded-full hover:bg-[#DDE8DC] dark:hover:bg-[#1E3328] transition-colors"
             >
               <IconCartPlus className="w-3.5 h-3.5" />
               {missingCount} einkaufen
@@ -105,23 +105,23 @@ export default function RecipeDetailPage({ params }: PageProps) {
             return (
               <li
                 key={i}
-                className="flex items-center justify-between py-2.5 border-b border-[#F0F4F0] last:border-0"
+                className="flex items-center justify-between py-2.5 border-b border-[#F0F4F0] dark:border-[#1E3328] last:border-0"
               >
                 <div className="flex items-center gap-2.5">
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    inPantry ? 'bg-[#EDF4EF]' : 'bg-[#FEF9EC]'
+                    inPantry ? 'bg-[#EDF4EF] dark:bg-[#1A2E20]' : 'bg-[#FEF9EC] dark:bg-[#2A1F00]/40'
                   }`}>
                     {inPantry
-                      ? <IconCheck className="w-3 h-3 text-[#2D6A4F]" />
-                      : <IconCartPlus className="w-3 h-3 text-[#B07D0A]" />
+                      ? <IconCheck className="w-3 h-3 text-[#2D6A4F] dark:text-[#5DB879]" />
+                      : <IconCartPlus className="w-3 h-3 text-[#B07D0A] dark:text-[#F2A20C]" />
                     }
                   </div>
-                  <span className={`font-semibold text-sm ${inPantry ? 'text-[#1A1A1A]' : 'text-[#6B7870]'}`}>
+                  <span className={`font-semibold text-sm ${inPantry ? 'text-[#1A1A1A] dark:text-[#F0EDE6]' : 'text-[#6B7870] dark:text-[#7FA88A]'}`}>
                     {ing.name}
-                    {ing.note && <span className="font-normal text-xs ml-1 text-[#6B7870]">({ing.note})</span>}
+                    {ing.note && <span className="font-normal text-xs ml-1 text-[#6B7870] dark:text-[#7FA88A]">({ing.note})</span>}
                   </span>
                 </div>
-                <span className="text-sm font-bold text-[#1A1A1A]">
+                <span className="text-sm font-bold text-[#1A1A1A] dark:text-[#F0EDE6]">
                   {ing.amount} {ing.unit}
                 </span>
               </li>
@@ -131,23 +131,23 @@ export default function RecipeDetailPage({ params }: PageProps) {
       </section>
 
       {/* Steps */}
-      <section className="bg-white rounded-2xl p-5 border border-[#DDE8DC]">
-        <h2 className="font-black text-[#1A1A1A] mb-4">Zubereitung</h2>
+      <section className="bg-white dark:bg-[#142219] rounded-2xl p-5 border border-[#DDE8DC] dark:border-[#1E3328]">
+        <h2 className="font-black text-[#1A1A1A] dark:text-[#F0EDE6] mb-4">Zubereitung</h2>
         <ol className="space-y-4" aria-label="Zubereitungsschritte">
           {recipe.steps.map((step, i) => (
             <li key={i} className="flex gap-4">
               <span className="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full bg-[#1C4A2E] text-white text-xs font-black">
                 {i + 1}
               </span>
-              <p className="text-sm text-[#1A1A1A] leading-relaxed pt-0.5">{step}</p>
+              <p className="text-sm text-[#1A1A1A] dark:text-[#F0EDE6] leading-relaxed pt-0.5">{step}</p>
             </li>
           ))}
         </ol>
       </section>
 
       {/* Nutrition */}
-      <section className="bg-white rounded-2xl p-5 border border-[#DDE8DC]">
-        <h2 className="font-black text-[#1A1A1A] mb-4">Nährwerte (pro Portion)</h2>
+      <section className="bg-white dark:bg-[#142219] rounded-2xl p-5 border border-[#DDE8DC] dark:border-[#1E3328]">
+        <h2 className="font-black text-[#1A1A1A] dark:text-[#F0EDE6] mb-4">Nährwerte (pro Portion)</h2>
         <div className="grid grid-cols-4 gap-2 text-center">
           {[
             { label: 'Kalorien', value: `${recipe.nutrition.kcal}`, unit: 'kcal' },
@@ -155,10 +155,10 @@ export default function RecipeDetailPage({ params }: PageProps) {
             { label: 'Kohlenhydrate', value: `${recipe.nutrition.carbs}`, unit: 'g' },
             { label: 'Fett', value: `${recipe.nutrition.fat}`, unit: 'g' },
           ].map(({ label, value, unit }) => (
-            <div key={label} className="bg-[#EDF4EF] rounded-xl py-3">
-              <div className="text-lg font-black text-[#1C4A2E]">{value}</div>
-              <div className="text-xs text-[#6B7870]">{unit}</div>
-              <div className="text-[10px] font-bold text-[#1A1A1A] mt-0.5 leading-tight">{label}</div>
+            <div key={label} className="bg-[#EDF4EF] dark:bg-[#1A2E20] rounded-xl py-3">
+              <div className="text-lg font-black text-[#1C4A2E] dark:text-[#5DB879]">{value}</div>
+              <div className="text-xs text-[#6B7870] dark:text-[#7FA88A]">{unit}</div>
+              <div className="text-[10px] font-bold text-[#1A1A1A] dark:text-[#F0EDE6] mt-0.5 leading-tight">{label}</div>
             </div>
           ))}
         </div>

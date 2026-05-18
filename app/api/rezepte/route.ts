@@ -36,9 +36,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ recipes })
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unbekannter Fehler'
-    if (message.includes('API_KEY') || message.includes('not set')) {
-      return NextResponse.json({ error: 'Kein API-Key konfiguriert.' }, { status: 503 })
+    console.error('Gemini error:', message)
+    if (message.includes('API_KEY') || message.includes('not set') || message.includes('API key')) {
+      return NextResponse.json({ error: 'API-Key ungültig. Bitte prüfe deinen Gemini Key.' }, { status: 401 })
     }
-    return NextResponse.json({ error: 'Rezeptgenerierung fehlgeschlagen. Bitte erneut versuchen.' }, { status: 503 })
+    if (message.includes('quota') || message.includes('429')) {
+      return NextResponse.json({ error: 'API-Limit erreicht. Bitte warte kurz und versuche es erneut.' }, { status: 429 })
+    }
+    return NextResponse.json({ error: `Fehler: ${message.slice(0, 120)}` }, { status: 503 })
   }
 }
